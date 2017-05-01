@@ -6,20 +6,38 @@ module.exports = function(app){
 		res.json(poke);
 	});
 
+
+
 	app.post('/api/friends', function(req, res){
-		var match = {
+
+		var pokematch = {
 			name: '', 
-			phoot: '', 
+			photo: '', 
 			diff: 100 
 		};
 
 		var newUser = req.body;
-		var userScores = user.scores;
+		var userScores = newUser.scores;
 		var totalDiff = 0;
 
+		for(var i = 0; j < poke[i].scores[j]; j++){
 
+			totalDiff += Math.abs(parseInt(userScores[j]) - parseInt(poke[i].scores));
 
+			if (totalDiff <= pokematch.diff){
+				pokematch.name = poke[i].name;
+				pokematch.photo = poke[i].photo;
+				pokematch.diff = totalDiff;
+			}
+
+		}
 
 	});
+
+
+	poke.push(newUser);
+	res.json(pokematch);
+
+	
 
 };

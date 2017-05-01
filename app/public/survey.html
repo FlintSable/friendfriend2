@@ -143,28 +143,33 @@
         <div class="modal-footer">
             <button type='button' class='btn btn-default' data-dismiss='modal'>close</button>
         </div>
-    	</div>
+    </div>
     </div>
     <script type='text/javascript'>
-    $('#submity').on('click', function(){
+    $('#submity').on('click', function() {
 
-    	var newUser = {
-    		name: $('#name').val(),
-    		photo: $('#photo').val(),
-    		scores: [$('#q1').val(), $('#q2').val(), $('#q3').val(), $('#q4').val(), $('#q5').val(), $('#q6').val(), $('#q7').val(), $('#q8').val(), $('#q9').val(), $('#q10').val()]
-    	};
-    	event.preventDefault();
 
-    	var curUrl = window.location.origin;
+        if ($('#name').val() === '' || $('#photo').val() === '') {
+        	$('#modal-content').modal('toggle');
 
-    	$.post(curUrl + '/api/friends', newUser, function(data){
-    		$('#poke-name').text(data.name);
-    		$('#poke-img').attr('src', data.phoot);
+        } else {
 
-    		$('$modal-content').modal('toggle');
-    	});
+            var newUser = {
+                name: $('#name').val(),
+                photo: $('#photo').val(),
+                scores: [$('#q1').val(), $('#q2').val(), $('#q3').val(), $('#q4').val(), $('#q5').val(), $('#q6').val(), $('#q7').val(), $('#q8').val(), $('#q9').val(), $('#q10').val()]
+            };
+            event.preventDefault();
+
+            var curUrl = window.location.origin;
+
+            $.post(curUrl + '/api/friends', newUser, function(data) {
+                $('#poke-name').text(data.name);
+                $('#poke-img').attr('src', data.photo);
+                $('$modal-content').modal('toggle');
+            });
+        }
     });
-
     </script>
 </body>
 
