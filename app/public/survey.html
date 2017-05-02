@@ -9,6 +9,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.5.1/chosen.css">
+    <link rel="stylesheet" href="css/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.5.1/chosen.jquery.min.js"></script>
 </head>
 
@@ -23,7 +24,7 @@
         <input type="text" id='photo' class='form-control' required>
         <hr>
         <h3><strong>quest 1</strong></h3>
-        <h4></h4>
+        <h4>Seeds are the aweseme.</h4>
         <select id="q1" class="chosen-select">
             <option value=""></option>
             <option value="1">1 (strongly disagree)</option>
@@ -33,7 +34,7 @@
             <option value="5">5 (strongly agree)</option>
         </select>
         <h3><strong>quest 2</strong></h3>
-        <h4></h4>
+        <h4>I am more interested in bushes.</h4>
         <select id="q2" class="chosen-select">
             <option value=""></option>
             <option value="1">1 (strongly disagree)</option>
@@ -43,7 +44,7 @@
             <option value="5">5 (strongly agree)</option>
         </select>
         <h3><strong>quest 3</strong></h3>
-        <h4></h4>
+        <h4>At heart I am a botanast.</h4>
         <select id="q3" class="chosen-select">
             <option value=""></option>
             <option value="1">1 (strongly disagree)</option>
@@ -53,7 +54,7 @@
             <option value="5">5 (strongly agree)</option>
         </select>
         <h3><strong>quest 4</strong></h3>
-        <h4></h4>
+        <h4>Lizards are really cool.</h4>
         <select id="q4" class="chosen-select">
             <option value=""></option>
             <option value="1">1 (strongly disagree)</option>
@@ -63,7 +64,7 @@
             <option value="5">5 (strongly agree)</option>
         </select>
         <h3><strong>quest 5</strong></h3>
-        <h4></h4>
+        <h4> I would not mind spitting fire.</h4>
         <select id="q5" class="chosen-select">
             <option value=""></option>
             <option value="1">1 (strongly disagree)</option>
@@ -73,7 +74,7 @@
             <option value="5">5 (strongly agree)</option>
         </select>
         <h3><strong>quest 6</strong></h3>
-        <h4></h4>
+        <h4> The desert, no sweat! Let's chill out.</h4>
         <select id="q6" class="chosen-select">
             <option value=""></option>
             <option value="1">1 (strongly disagree)</option>
@@ -83,7 +84,7 @@
             <option value="5">5 (strongly agree)</option>
         </select>
         <h3><strong>quest 7</strong></h3>
-        <h4></h4>
+        <h4> turtles! </h4>
         <select id="q7" class="chosen-select">
             <option value=""></option>
             <option value="1">1 (strongly disagree)</option>
@@ -93,7 +94,7 @@
             <option value="5">5 (strongly agree)</option>
         </select>
         <h3><strong>quest 8</strong></h3>
-        <h4></h4>
+        <h4> Spending time next to the ocean is where I want to be. </h4>
         <select id="q8" class="chosen-select">
             <option value=""></option>
             <option value="1">1 (strongly disagree)</option>
@@ -103,7 +104,7 @@
             <option value="5">5 (strongly agree)</option>
         </select>
         <h3><strong>quest 9</strong></h3>
-        <h4></h4>
+        <h4> I could be a marine. </h4>
         <select id="q9" class="chosen-select">
             <option value=""></option>
             <option value="1">1 (strongly disagree)</option>
@@ -113,7 +114,7 @@
             <option value="5">5 (strongly agree)</option>
         </select>
         <h3><strong>quest 10</strong></h3>
-        <h4></h4>
+        <h4>Pika me!</h4>
         <select id="q10" class="chosen-select">
             <option value=""></option>
             <option value="1">1 (strongly disagree)</option>
@@ -123,22 +124,24 @@
             <option value="5">5 (strongly agree)</option>
         </select>
         <br>
+        <br>
         <button type='submit' class='btn btn-primary btn-lg btn-block' id='submity'>submit</button>
         <hr>
+        <br>
         <footer class="foot">
             <div class="container">
                 <p><a href="/api/friends">api pokemon list</a> | <a href="https://github.com/FlintSable/FriendFinder">github repo</a></p>
             </div>
         </footer>
     </div>
-    <div class="modal-content">
+    <div id='poke-modal' class="modal-content">
         <div class="modal-header">
             <button type='button' class="close" data-dismiss='modal'>&times</button>
             <h2 class="modal-title">Best Match</h2>
         </div>
         <div class="modal-body">
             <h2 id='poke-name'></h2>
-            <img src="poke-img" alt="poke-match">
+            <img id="poke-img" alt="poke-match">
         </div>
         <div class="modal-footer">
             <button type='button' class='btn btn-default' data-dismiss='modal'>close</button>
@@ -146,29 +149,77 @@
     </div>
     </div>
     <script type='text/javascript'>
-    $('#submity').on('click', function() {
+    $(document).ready(function() {
+        $clearLay = $('<div id="clearLayer"></div>'); // aoverlay
+        $ghost = $('<div id="ghost"></div>'); //modal
+        $poke = $('<div id="poke">'); // content
 
+        $close = $('<a id="close" href="#"> close </a>'); // close
 
-        if ($('#name').val() === '' || $('#photo').val() === '') {
-        	$('#modal-content').modal('toggle');
+        $ghost.hide();
+        $clearLay.hide();
+        $('#poke-modal').hide()
 
-        } else {
+        $ghost.append($poke, $close)
 
-            var newUser = {
-                name: $('#name').val(),
-                photo: $('#photo').val(),
-                scores: [$('#q1').val(), $('#q2').val(), $('#q3').val(), $('#q4').val(), $('#q5').val(), $('#q6').val(), $('#q7').val(), $('#q8').val(), $('#q9').val(), $('#q10').val()]
-            };
-            event.preventDefault();
+        $('body').prepend($clearLay, $ghost);
 
-            var curUrl = window.location.origin;
+        function modalRender() {
+            if ($('#name').val() === '' || $('#photo').val() === '') {
+                $('body').append($testgeneric);
+            } else {
+                // $ghost.show();
+                // $clearLay.show();
+                $('#poke-modal').show();
 
-            $.post(curUrl + '/api/friends', newUser, function(data) {
-                $('#poke-name').text(data.name);
-                $('#poke-img').attr('src', data.photo);
-                $('$modal-content').modal('toggle');
-            });
+            }
+
         }
+
+
+        $('#submity').on('click', function() {
+
+
+            if ($('#nombre').val() === '' || $('#photo').val() === '') {
+                // $('#modal-content').modala('toggle');
+                $('body').append($testgeneric);
+
+
+            } else {
+                var newUser = {
+                    name: $('#name').val(),
+                    photo: $('#photo').val(),
+                    scores: [$('#q1').val(),
+                        $('#q2').val(),
+                        $('#q3').val(),
+                        $('#q4').val(),
+                        $('#q5').val(),
+                        $('#q6').val(),
+                        $('#q7').val(),
+                        $('#q8').val(),
+                        $('#q9').val(),
+                        $('#q10').val()
+                    ]
+                };
+
+                modalRender();
+                event.preventDefault();
+                var curUrl = window.location.origin;
+
+
+
+                $.post(curUrl + '/api/friends', newUser, function(data) {
+                    modalRender();
+
+                    $('#poke-name').text(data.name);
+                    $('#poke-img').attr('src', data.photo);
+                    $('#poke-model').show();;
+                    // console.log(data);
+                });
+
+            }
+        });
+
     });
     </script>
 </body>
