@@ -35,7 +35,7 @@ module.exports = function(app){
 	});
 
 
-	poke.push(newUser);
+	poke.push();
 	res.json(pokematch);
 
 	
