@@ -1,0 +1,24 @@
+{
+  "name": "friendfriend2",
+  "version": "1.0.0",
+  "description": "friend finder number two",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FlintSable/friendfriend2.git"
+  },
+  "author": "n",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FlintSable/friendfriend2/issues"
+  },
+  "homepage": "https://github.com/FlintSable/friendfriend2#readme",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "path": "^0.12.7"
+  }
+}
