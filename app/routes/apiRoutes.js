@@ -1,52 +1,59 @@
 var poke = require('../data/friends');
 
 
-module.exports = function(app){
-	app.get('/api/friends', function(req, res){
-		res.json(poke);
-	});
+module.exports = function(app) {
+    app.get('/api/friends', function(req, res) {
+        res.json(poke);
+    });
 
 
 
 
-	app.post('/api/friends', function(req, res, next){
+    app.post('/api/friends', function(req, res, next) {
 
-		var pokematch = {
-			name: '', 
-			photo: '', 
-			diff: 100 
-		};
+        var pokematch = {
+            name: '',
+            photo: '',
+            diff: 100
+        };
 
-		var newUser = req.body;
-		console.log(newUser);
-		var userScores = newUser.scores;
-		var totalDiff = 0;
+        var newUser = req.body;
+        console.log(newUser);
+        var userScores = newUser.scores;
+        var totalDiff = 0;
 
-		for(var i=0; i < poke.length; i++){
-			console.log(poke[i].name);
-			totalDiff = 0;
+        for (var i = 0; i < poke.length; i++) {
+            console.log(poke[i].name);
+            totalDiff = 0;
 
-			for (var j=0; j<poke[i].scores[j]; j++){
-				totalDiff += Math.abs(parseInt(userScores[j]) - parseInt(poke[i].scores[j]));
+            for (var j = 0; j < poke[i].scores[j]; j++) {
+                totalDiff += Math.abs(parseInt(userScores[j]) - parseInt(poke[i].scores[j]));
+                console.log(parseInt(userScores[j]));
+                console.log(parseInt(poke[i].scores[j]));
+                console.log(totalDiff);
 
-				if(totalDiff <= pokematch.diff){
-					pokematch.name = poke[i].name;
-					pokematch.photo = poke[i].photo;
-					pokematch.diff = totalDiff;
-				}
-			}
-		}
+                if (totalDiff <= pokematch.diff) {
 
-
-		poke.push(newUser);
-		console.log(pokematch);
-		res.json(pokematch);
-
-
-	});
-
+                    pokematch.name = poke[i].name;
+                    pokematch.photo = poke[i].photo;
+                    pokematch.diff = totalDiff;
+                    // console.log(pokematch);
+                    // console.log(pokematch.name);
+                    // console.log(pokematch.diff);
+                }
+            }
+        }
 
 
-	
+        poke.push(newUser);
+        console.log(pokematch);
+        res.json(pokematch);
+
+
+    });
+
+
+
+
 
 };

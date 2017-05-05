@@ -19,7 +19,7 @@
         <hr>
         <h3><strong>About you</strong></h3>
         <h4>name (requires)</h4>
-        <input type="text" id='nombre' class='form-control' required>
+        <input type="text" id='name' class='form-control' required>
         <h4>Link to photo (required)</h4>
         <input type="text" id='photo' class='form-control' required>
         <hr>
@@ -133,63 +133,66 @@
                 <p><a href="/api/friends">api pokemon list</a> | <a href="https://github.com/FlintSable/FriendFinder">github repo</a></p>
             </div>
         </footer>
+        <!-- match modal -->
     </div>
-    <div id='poke-modal' class="modal-content">
-        <div class="modal-header">
-            <button type='button' class="close" data-dismiss='modal'>&times</button>
-            <h2 class="modal-title">Best Match</h2>
+    <div id='poke-modal' class='modal fade' role='dialog'>
+        <div class='modal-dialog'>
+            <div class='modal-content'>
+                <div class='modal-header'>
+                    <button type='button' class='close' data-dismiss='modal'>o</button>
+                    <h2 class='modal-title'><strong>The pokemon for you is</strong></h2>
+                </div>
+                <div class='modal-body' style='text-align:center'>
+                    <h2 id='poke-name'></h2>
+                    <img id='poke-img' src="http://cdn.bulbagarden.net/upload/archive/3/36/20140703020618%21132Ditto.png" height='300' alt=''>
+                </div>
+                <div class='modal-footer'>
+                    <button type='button' class='btn btn-default' data-dismiss='modal'>x</button>
+                </div>
+            </div>
         </div>
-        <div class="modal-body">
-            <h2 id='poke-name'></h2>
-            <img id="poke-img" alt="poke-match">
-        </div>
-        <div class="modal-footer">
-            <button type='button' class='btn btn-default' data-dismiss='modal'>close</button>
+    </div>
+    <!-- data val modal -->
+    </div>
+    <div id='retry' class='modal fade' role='dialog'>
+        <div class='modal-dialog'>
+            <div class='modal-content'>
+                <div class='modal-header'>
+                    <button type='button' class='close' data-dismiss='modal'>o</button>
+                    <h2 class='modal-title'><strong>There seems to be some missing data</strong></h2>
+                </div>
+                <div class='modal-body' style='text-align:center'>
+                    <h2 id='retry-bold'>data missing</h2>
+                </div>
+                <div class='modal-footer'>
+                    <button type='button' class='btn btn-default' data-dismiss='modal'>x</button>
+                </div>
+            </div>
         </div>
     </div>
     </div>
     <script type='text/javascript'>
     $(document).ready(function() {
-        $clearLay = $('<div id="clearLayer"></div>'); // aoverlay
-        $ghost = $('<div id="ghost"></div>'); //modal
-        $poke = $('<div id="poke">'); // content
+        $('#poke-modal').hide();
+        $('#retry').hide();
 
-        $close = $('<a id="close" href="#"> close </a>'); // close
 
-        $ghost.hide();
-        $clearLay.hide();
-        $('#poke-modal').hide()
 
-        $ghost.append($poke, $close)
 
-        $('body').prepend($clearLay, $ghost);
+        $('#submity').on('click', function(event) {
+            event.preventDefault();
 
-        function modalRender() {
+
+
             if ($('#name').val() === '' || $('#photo').val() === '') {
-                $('body').append($testgeneric);
-            } else {
-                // $ghost.show();
-                // $clearLay.show();
-                $('#poke-modal').show();
-
-            }
-
-        }
-
-
-        $('#submity').on('click', function() {
-
-
-            if ($('#nombre').val() === '' || $('#photo').val() === '') {
-                // $('#modal-content').modala('toggle');
-                $('body').append($testgeneric);
-
+                $('#retry').modal('show');
 
             } else {
                 var newUser = {
                     name: $('#name').val(),
                     photo: $('#photo').val(),
-                    scores: [$('#q1').val(),
+                    scores: [
+                        $('#q1').val(),
                         $('#q2').val(),
                         $('#q3').val(),
                         $('#q4').val(),
@@ -201,20 +204,27 @@
                         $('#q10').val()
                     ]
                 };
-
-                modalRender();
                 event.preventDefault();
                 var curUrl = window.location.origin;
 
-
-
                 $.post(curUrl + '/api/friends', newUser, function(data) {
-                    modalRender();
-
+                    console.log(data);
                     $('#poke-name').text(data.name);
                     $('#poke-img').attr('src', data.photo);
-                    $('#poke-model').show();;
-                    // console.log(data);
+                    $('#poke-modal').modal('show');
+
+                    $('#name').val('');
+                    $('#photo').val('');
+                    $('#q1').val('');
+                    $('#q2').val('');
+                    $('#q3').val('');
+                    $('#q4').val('');
+                    $('#q5').val('');
+                    $('#q6').val('');
+                    $('#q7').val('');
+                    $('#q8').val('');
+                    $('#q9').val('');
+                    $('#q10').val('');
                 });
 
             }
