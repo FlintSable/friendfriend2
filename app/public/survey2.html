@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Friend Finder Survey</title>
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<div class="container">
+    <h2>survey quests</h2>
+    <hr>
+    <h3><strong>About you</strong></h3>
+    <form class="col s12">
+        <div class="row">
+            <div class="input-field col s12 m6">
+                <i class="material-icons prefix">account_circle</i>
+                <input id="name" type="text" class="validate">
+                <label for="icon_prefix">First Name</label>
+            </div>
+            <div class="input-field col s12 m6">
+                <i class="material-icons prefix">link</i>
+                <input id="photo" type="text" class="validate">
+                <label for="icon_picture-in-picture">Lint to Picture</label>
+            </div>
+        </div>
+    </form>
+    <div class="row">
+        <div class="input-field col s12 m6">
+            <select id="q1">
+                <option value="" disabled="" selected="">Seeds are awesome.</option>
+                <option value="1">1 (strongly disagree)</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5 (strongly agree)</option>
+            </select>
+            <label>quest 1</label>
+        </div>
+        <div class="input-field col s12 m6">
+            <select id="q2">
+                <option value="" disabled="" selected="">Bushes interest me.</option>
+                <option value="1">1 (strongly disagree)</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5 (strongly agree)</option>
+            </select>
+            <label>quest 2</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s12 m6">
+            <select id="q3">
+                <option value="" disabled="" selected="">At heart I am a botanast.</option>
+                <option value="1">1 (strongly disagree)</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5 (strongly agree)</option>
+            </select>
+            <label>quest 3</label>
+        </div>
+        <div class="input-field col s12 m6">
+            <select id="q4">
+                <option value="" disabled="" selected="">Lizards are really fkc cool.</option>
+                <option value="1">1 (strongly disagree)</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5 (strongly agree)</option>
+            </select>
+            <label>quest 4</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s12 m6">
+            <select id="q5">
+                <option value="" disabled="" selected="">Wish I could spit fire.</option>.
+                <option value="1">1 (strongly disagree)</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5 (strongly agree)</option>
+            </select>
+            <label>quest 5</label>
+        </div>
+        <div class="input-field col s12 m6">
+            <select id="q2">
+                <option value="" disabled="" selected="">The desert, no sweat! Let's chill out.</option>
+                <option value="1">1 (strongly disagree)</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5 (strongly agree)</option>
+            </select>
+            <label>quest 6</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s12 m6">
+            <select id="q7">
+                <option value="" disabled="" selected="">turtles!</option>
+                <option value="1">1 (strongly disagree)</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5 (strongly agree)</option>
+            </select>
+            <label>quest 7</label>
+        </div>
+        <div class="input-field col s12 m6">
+            <select id="q8">
+                <option value="" disabled="" selected="">Spending time next to the ocean is where I want to be.</option>
+                <option value="1">1 (strongly disagree)</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5 (strongly agree)</option>
+            </select>
+            <label>quest 8</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s12 m6">
+            <select id="q9">
+                <option value="" disabled="" selected="">I could be a marine.</option>
+                <option value="1">1 (strongly disagree)</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5 (strongly agree)</option>
+            </select>
+            <label>quest 9</label>
+        </div>
+        <div class="input-field col s12 m6">
+            <select id="q10">
+                <option value="" disabled="" selected="">Pika me!.</option>
+                <option value="1">1 (strongly disagree)</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5 (strongly agree)</option>
+            </select>
+            <label>quest 10</label>
+        </div>
+    </div>
+    <br>
+    <a type="submit" class="btn" id="submity">submit</a>
+    <br>
+    <br>
+    <footer class="foot">
+        <div class="container">
+            <p class='center-align'><a href="/api/friends">api pokemon list</a> | <a href="https://github.com/FlintSable/FriendFinder">github repo</a></p>
+        </div>
+    </footer>
+    <!-- match modal -->
+</div>
+<!-- <div id="poke-modal" class="modal" role="dialog">
+    <div class="modal-content">
+        <button type="button" class="close" data-dismiss="modal">o</button>
+        <h2 class="modal-title"><strong>The pokemon for you is</strong></h2>
+        <h2 id="poke-name"></h2>
+        <img id="poke-img" src="http://cdn.bulbagarden.net/upload/archive/3/36/20140703020618%21132Ditto.png" height="300" alt="">
+    </div>
+    <div class="modal-footer">
+        <a href='#!' type="button" class="modal-action btn btn-flat" data-dismiss="modal">x</button>
+            </div>
+        </div>
+</div> -->
+
+<!-- data val modal -->
+<!-- <div id="retry" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">o</button>
+                <h2 class="modal-title"><strong>There seems to be some missing data</strong></h2>
+            </div>
+            <div class="modal-body" style="text-align:center">
+                <h2 id="retry-bold">data missing</h2>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">x</button>
+            </div>
+        </div>
+    </div>
+</div> -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="js/materialize.min.js"></script>
+<script type="text/javascript" src="js/script.js"></script>
+
+<!-- <script type='text/javascript'>
+$(document).ready(function() {
+    $('select').material_select();
+    // $('#poke-modal').hide();
+    // $('#retry').hide();
+
+
+
+
+    $('#submity').on('click', function(event) {
+        event.preventDefault();
+
+
+
+        if ($('#name').val() === '' || $('#photo').val() === '') {
+            // $('#retry').leanModal();
+            $('#retry').modal('open');
+
+        } else {
+            var newUser = {
+                name: $('#name').val(),
+                photo: $('#photo').val(),
+                scores: [
+                    $('#q1').val(),
+                    $('#q2').val(),
+                    $('#q3').val(),
+                    $('#q4').val(),
+                    $('#q5').val(),
+                    $('#q6').val(),
+                    $('#q7').val(),
+                    $('#q8').val(),
+                    $('#q9').val(),
+                    $('#q10').val()
+                ]
+            };
+            event.preventDefault();
+            var curUrl = window.location.origin;
+
+            $.post(curUrl + '/api/friends', newUser, function(data) {
+                console.log(data);
+                $('#poke-name').text(data.name);
+                $('#poke-img').attr('src', data.photo);
+                $('#poke-modal').modal('show');
+                // $('#poke-modal').modal();
+
+                $('#name').val('');
+                $('#photo').val('');
+                $('#q1').val('');
+                $('#q2').val('');
+                $('#q3').val('');
+                $('#q4').val('');
+                $('#q5').val('');
+                $('#q6').val('');
+                $('#q7').val('');
+                $('#q8').val('');
+                $('#q9').val('');
+                $('#q10').val('');
+            });
+
+        }
+    });
+
+});
+</script> -->
+
+</body>
+
+</html>
