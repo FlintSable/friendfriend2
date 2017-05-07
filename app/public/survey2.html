@@ -15,7 +15,7 @@
     <h2>survey quests</h2>
     <hr>
     <h3><strong>About you</strong></h3>
-    <form class="col s12">
+    <!-- <form class="col s12"> -->
         <div class="row">
             <div class="input-field col s12 m6">
                 <i class="material-icons prefix">account_circle</i>
@@ -28,7 +28,7 @@
                 <label for="icon_picture-in-picture">Lint to Picture</label>
             </div>
         </div>
-    </form>
+    <!-- </form> -->
     <div class="row">
         <div class="input-field col s12 m6">
             <select id="q1">
@@ -90,7 +90,7 @@
             <label>quest 5</label>
         </div>
         <div class="input-field col s12 m6">
-            <select id="q2">
+            <select id="q6">
                 <option value="" disabled="" selected="">The desert, no sweat! Let's chill out.</option>
                 <option value="1">1 (strongly disagree)</option>
                 <option value="2">2</option>
@@ -158,106 +158,49 @@
             <p class='center-align'><a href="/api/friends">api pokemon list</a> | <a href="https://github.com/FlintSable/FriendFinder">github repo</a></p>
         </div>
     </footer>
-    <!-- match modal -->
 </div>
+    <!-- match modal -->
+  <div id="retry" class="modal">
+    <div class="modal-content">
+      <h4>data missing</h4>
+      <p>Please fill in missing info for results</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+  </div>
+
+          
+
 <!-- <div id="poke-modal" class="modal" role="dialog">
     <div class="modal-content">
         <button type="button" class="close" data-dismiss="modal">o</button>
         <h2 class="modal-title"><strong>The pokemon for you is</strong></h2>
-        <h2 id="poke-name"></h2>
-        <img id="poke-img" src="http://cdn.bulbagarden.net/upload/archive/3/36/20140703020618%21132Ditto.png" height="300" alt="">
+
     </div>
     <div class="modal-footer">
         <a href='#!' type="button" class="modal-action btn btn-flat" data-dismiss="modal">x</button>
             </div>
         </div>
 </div> -->
-
-<!-- data val modal -->
-<!-- <div id="retry" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">o</button>
-                <h2 class="modal-title"><strong>There seems to be some missing data</strong></h2>
-            </div>
-            <div class="modal-body" style="text-align:center">
-                <h2 id="retry-bold">data missing</h2>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">x</button>
-            </div>
-        </div>
+  <!-- Modal Structure -->
+  <div id="poke-modal" class="modal">
+    <div class="modal-content">
+      <h4>The pokemon for you it!</h4>
+      <p>Please fill in missing info for results</p>
+        <h2 id="poke-name"></h2>
+        <img id="poke-img" src="http://cdn.bulbagarden.net/upload/archive/3/36/20140703020618%21132Ditto.png" height="300" alt="">
     </div>
-</div> -->
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+  </div>
+
+
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script type="text/javascript" src="js/materialize.min.js"></script>
 <script type="text/javascript" src="js/script.js"></script>
 
-<!-- <script type='text/javascript'>
-$(document).ready(function() {
-    $('select').material_select();
-    // $('#poke-modal').hide();
-    // $('#retry').hide();
-
-
-
-
-    $('#submity').on('click', function(event) {
-        event.preventDefault();
-
-
-
-        if ($('#name').val() === '' || $('#photo').val() === '') {
-            // $('#retry').leanModal();
-            $('#retry').modal('open');
-
-        } else {
-            var newUser = {
-                name: $('#name').val(),
-                photo: $('#photo').val(),
-                scores: [
-                    $('#q1').val(),
-                    $('#q2').val(),
-                    $('#q3').val(),
-                    $('#q4').val(),
-                    $('#q5').val(),
-                    $('#q6').val(),
-                    $('#q7').val(),
-                    $('#q8').val(),
-                    $('#q9').val(),
-                    $('#q10').val()
-                ]
-            };
-            event.preventDefault();
-            var curUrl = window.location.origin;
-
-            $.post(curUrl + '/api/friends', newUser, function(data) {
-                console.log(data);
-                $('#poke-name').text(data.name);
-                $('#poke-img').attr('src', data.photo);
-                $('#poke-modal').modal('show');
-                // $('#poke-modal').modal();
-
-                $('#name').val('');
-                $('#photo').val('');
-                $('#q1').val('');
-                $('#q2').val('');
-                $('#q3').val('');
-                $('#q4').val('');
-                $('#q5').val('');
-                $('#q6').val('');
-                $('#q7').val('');
-                $('#q8').val('');
-                $('#q9').val('');
-                $('#q10').val('');
-            });
-
-        }
-    });
-
-});
-</script> -->
 
 </body>
 
