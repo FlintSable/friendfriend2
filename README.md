@@ -2,7 +2,7 @@
 
 
 ## Live Link
- - www.example.com
+ - https://safe-basin-55339.herokuapp.com/
 
 ## Description on how to use the app
 
